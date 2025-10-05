@@ -1,0 +1,27 @@
+pandas>=1.3
+numpy>=1.21
+scikit-learn>=1.0
+scipy>=1.7
+beautifulsoup4>=4.10
+matplotlib>=3.4
+🧪 How to install
+bash
+Copy code
+pip install -r requirements.txt
+These versions are conservative and compatible with Python 3.8+.
+
+If you want tighter control over environments (especially for production), consider using pip freeze to lock exact versions:
+
+bash
+Copy code
+pip freeze > requirements.txt
+📦 Optional (for dev)
+If you plan to add testing, type checking, or linting, here are some optional extras:
+
+txt
+Copy code
+# Dev tools (optional)
+pytest
+black
+ruff
+mypy
