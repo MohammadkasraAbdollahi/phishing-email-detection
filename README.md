@@ -1,134 +1,59 @@
-# 🛡️ Phishing Email Detection Using Machine Learning
+# 📧 Phishing Email Detection Using Machine Learning
 
-This project builds a machine learning pipeline to **detect phishing emails** based on their content and structure. It uses basic natural language processing (NLP) and metadata features (e.g., number of URLs) to classify emails as **phishing** or **legitimate**.
+## 🧠 Project Overview  
+This project uses machine learning to detect phishing emails based on their content and metadata. Phishing emails are fraudulent messages meant to steal sensitive information like passwords and credit card numbers. Automatically identifying them helps users stay safe online.
 
----
+## 📂 Dataset  
+The dataset contains over 39,000 emails with the following features:
+- `subject`: The email subject line  
+- `body`: The email body  
+- `urls`: Number of URLs in the email  
+- `label`: 1 = phishing, 0 = legitimate
 
-## 📦 Features
+## ⚙️ Approach  
+- Filled missing values in `subject` and `receiver` fields  
+- Combined `subject` and `body` into a new `text` column  
+- Converted `text` into numerical features using **TF-IDF vectorization**  
+- Added number of URLs as a numeric feature  
+- Trained a **Logistic Regression** classifier  
+- Evaluated the model with **precision**, **recall**, and **f1-score**
 
-- Combines email **subject** and **body** into a single text input.
-- Cleans and strips **HTML tags** from email body.
-- Converts text to vectors using **TF-IDF**.
-- Adds **number of URLs** as a numerical feature.
-- Uses **Logistic Regression** for classification.
-- Handles **class imbalance** via `class_weight='balanced'`.
-- Outputs detailed evaluation:
-  - Classification report
-  - Confusion matrix
-  - ROC AUC score
-- Shows top words that indicate phishing or legitimate emails.
+## 📊 Label Distribution
 
----
+This chart shows how many emails in the dataset are phishing vs legitimate:
 
-## 📁 Dataset Format
+![Label Distribution](label_distribution.png)
 
-Your CSV file must contain the following columns:
+## ✅ Results  
+- **Accuracy**: 99% on test data  
+- **Precision/Recall** for phishing emails: ~0.99  
+- Model performs well on both classes with balanced support
 
-| Column  | Description                             |
-|---------|-----------------------------------------|
-| subject | Email subject (text)                    |
-| body    | Email body (HTML or plain text)         |
-| urls    | Number of URLs in the email (integer)   |
-| label   | Target label: `1` = phishing, `0` = legit|
+## 🚀 How to Run
 
-Example row:
+1. Clone this repository  
+2. Install the required packages:
+   ```bash
+   pip install pandas scikit-learn numpy scipy matplotlib seaborn
+Run the Python script or the Jupyter notebook (Colab-compatible) to train and test the model.
 
-```csv
-subject,body,urls,label
-"Win a free iPhone!","<html>Click <a href='http://scam.com'>here</a> to claim now!</html>",1,1
-🛠️ Installation
-bash
-Copy code
-git clone https://github.com/yourusername/phishing-email-detection.git
-cd phishing-email-detection
+📌 Example Workflow (Colab)
+Upload CEAS_08.csv or your dataset
 
-# Create a virtual environment (optional)
-python -m venv venv
-source venv/bin/activate  # or venv\Scripts\activate on Windows
+Preprocess and vectorize the data
 
-# Install required packages
-pip install -r requirements.txt
-🚀 Usage
-bash
-Copy code
-python phishing_detector.py --data data/emails.csv
-You’ll see output like:
+Train and evaluate the model
 
-Label distribution
+Visualize the results
 
-Classification metrics
+💡 Future Improvements
+Add interpretability tools like SHAP or word clouds
 
-Confusion matrix (also visualized)
+Build a simple Streamlit or web app to make predictions interactively
 
-Top phishing/legitimate keywords
+Create a blog post or report to explain the project clearly
 
-##🧪 Example Output
-text
-Copy code
-Label distribution:
- 0    500
- 1    150
+Package the project with tests and cleaner structure
 
-Classification Report:
-              precision    recall  f1-score   support
-         0       0.98      0.99      0.98       100
-         1       0.99      0.97      0.98        30
-
-Confusion Matrix:
-[[99  1]
- [ 1 29]]
-
-ROC AUC Score: 0.9942
-
-Top phishing words:
-  replica: 1.382
-  watches: 1.142
-  click: 1.101
-  http: 1.076
-  win: 0.963
-
-Top legitimate words:
-  thanks: -0.921
-  wrote: -0.865
-  update: -0.755
-  python: -0.672
-##🔍 Requirements
-You’ll find all dependencies in requirements.txt. Key packages:
-
-scikit-learn
-
-pandas
-
-numpy
-
-scipy
-
-beautifulsoup4
-
-matplotlib
-
-##🧠 Ideas for Improvement
-Add support for email attachments or headers
-
-Train a neural network or fine-tune a transformer (e.g., DistilBERT)
-
-Build a Streamlit or FastAPI app for real-time email classification
-
-Add explainability using SHAP or LIME
-
-Use additional features like:
-
-Domain reputation
-
-IP addresses
-
-Language detection
-
-Email length & read-time
-
-##📄 License
-MIT License © 2025 [Your Name]
-
-##🤝 Contributions
-PRs welcome! If you'd like to suggest new features or fixes, feel free to open an issue or submit a pull request.
-
+👤 Author
+Mohammad Kasra Abdollahi
