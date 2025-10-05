@@ -62,7 +62,7 @@ Confusion matrix (also visualized)
 
 Top phishing/legitimate keywords
 
-🧪 Example Output
+##🧪 Example Output
 text
 Copy code
 Label distribution:
@@ -92,7 +92,7 @@ Top legitimate words:
   wrote: -0.865
   update: -0.755
   python: -0.672
-🔍 Requirements
+##🔍 Requirements
 You’ll find all dependencies in requirements.txt. Key packages:
 
 scikit-learn
@@ -107,7 +107,7 @@ beautifulsoup4
 
 matplotlib
 
-🧠 Ideas for Improvement
+##🧠 Ideas for Improvement
 Add support for email attachments or headers
 
 Train a neural network or fine-tune a transformer (e.g., DistilBERT)
@@ -126,8 +126,9 @@ Language detection
 
 Email length & read-time
 
-📄 License
+##📄 License
 MIT License © 2025 [Your Name]
 
-🤝 Contributions
+##🤝 Contributions
 PRs welcome! If you'd like to suggest new features or fixes, feel free to open an issue or submit a pull request.
+
